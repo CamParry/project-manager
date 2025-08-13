@@ -10,12 +10,12 @@ class ProjectData extends Data
 {
     public function __construct(
         public int $id,
-        public ?string $title,
-        public ?string $status,
-        public ?int $priority,
+        public string $title,
+        public string $status,
+        public int $priority,
         public ?string $content,
-        public ?string $client,
         public ?string $deadline,
+        public ?string $client,
         public string $created_at,
         public string $updated_at,
     ) {}
