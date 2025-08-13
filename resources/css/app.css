@@ -16,7 +16,7 @@
     --color-n-800: theme(colors.zinc.800);
     --color-n-900: theme(colors.zinc.900);
 
-    --color-primary: theme(colors.sky.600);
+    --color-primary: theme(colors.amber.600);
     --color-danger: theme(colors.red.600);
     --color-bg: theme(colors.white);
     --color-bg-muted: theme(colors.zinc.100);
@@ -27,7 +27,7 @@
 }
 
 .dark {
-    --color-primary: theme(colors.sky.500);
+    --color-primary: theme(colors.amber.500);
     --color-danger: theme(colors.red.500);
     --color-bg: theme(colors.zinc.900);
     --color-bg-muted: theme(colors.zinc.800);
@@ -141,11 +141,13 @@
                         height: 1.125rem;
                         flex-shrink: 0;
                         border-radius: 0.25rem;
+                        background-color: transparent;
+                        border-color: var(--color-border);
                     }
 
                     & input[type="checkbox"]:checked {
-                        background-color: theme(colors.sky.600);
-                        border-color: theme(colors.sky.600);
+                        background-color: var(--color-primary);
+                        border-color: var(--color-primary);
                     }
                 }
 
