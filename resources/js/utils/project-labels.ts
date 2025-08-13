@@ -5,7 +5,6 @@
 
 export type ProjectStatusValue = 
     | "not-started" 
-    | "planning" 
     | "waiting" 
     | "in-progress" 
     | "on-hold" 
@@ -20,7 +19,6 @@ export type ProjectPriorityValue = 1 | 2 | 3 | 4;
 export function getStatusLabel(status: ProjectStatusValue): string {
     const statusLabels: Record<ProjectStatusValue, string> = {
         "not-started": "Not Started",
-        "planning": "Planning",
         "waiting": "Waiting",
         "in-progress": "In Progress",
         "on-hold": "On Hold",
@@ -51,7 +49,6 @@ export function getPriorityLabel(priority: ProjectPriorityValue): string {
 export function getStatusOptions() {
     return [
         { value: "not-started", label: "Not Started" },
-        { value: "planning", label: "Planning" },
         { value: "waiting", label: "Waiting" },
         { value: "in-progress", label: "In Progress" },
         { value: "on-hold", label: "On Hold" },

@@ -4,7 +4,6 @@ import { PriorityIcon } from "@/components/icon-priority";
 import { StatusIcon } from "@/components/icon-status";
 import { useAppState } from "@/contexts/app-state";
 import { ProjectSummary } from "@/types";
-import { getStatusLabel } from "@/utils/project-labels";
 import { Link, router, usePage } from "@inertiajs/react";
 import { ChevronDown, ChevronRight, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -172,7 +171,7 @@ function ProjectItem({ project }: { project: ProjectSummary }) {
                 <div className="ml-3 flex shrink-0 items-center gap-2">
                     <StatusIcon
                         className="size-4"
-                        value={getStatusLabel(project.status as any)}
+                        value={project.status}
                     />
                     <PriorityIcon className="size-4" value={project.priority} />
                 </div>

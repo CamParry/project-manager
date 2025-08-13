@@ -13,9 +13,7 @@ import { useConfirm } from "@/contexts/confirm";
 import { useValidation } from "@/hooks/use-validation";
 import { ProjectFormData } from "@/types";
 import {
-    getPriorityLabel,
     getPriorityOptions,
-    getStatusLabel,
     getStatusOptions,
 } from "@/utils/project-labels";
 import { router } from "@inertiajs/react";
@@ -32,7 +30,7 @@ export function ProjectHeader({ projectId }: { projectId: number }) {
     // Get options from utility functions
     const statusOptions = getStatusOptions().map((option) => ({
         ...option,
-        icon: <StatusIcon className="size-4" value={option.label} />,
+        icon: <StatusIcon className="size-4" value={option.value} />,
     }));
 
     const priorityOptions = getPriorityOptions().map((option) => ({
@@ -40,12 +38,6 @@ export function ProjectHeader({ projectId }: { projectId: number }) {
         icon: <PriorityIcon className="size-4" value={option.value} />,
     }));
 
-    const currentStatusLabel = getStatusLabel(
-        (form.watch("status") as any) || "not-started"
-    );
-    const currentPriorityLabel = getPriorityLabel(
-        (form.watch("priority") || 4) as any
-    );
 
     const handleDelete = () => {
         confirm({
@@ -108,7 +100,7 @@ export function ProjectHeader({ projectId }: { projectId: number }) {
                     optionsClassName="w-40"
                     className="icon-button"
                 >
-                    <StatusIcon className="size-5" value={currentStatusLabel} />
+                    <StatusIcon className="size-5" value={form.watch("status")} />
                 </Dropdown>
                 <Dropdown
                     value={form.watch("priority")}
