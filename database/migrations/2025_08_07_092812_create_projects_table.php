@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->text('content');
             $table->string('status');
             $table->integer('priority');
+            $table->text('content')->nullable();
             $table->string('client')->nullable();
             $table->date('deadline')->nullable();
             $table->timestamps();

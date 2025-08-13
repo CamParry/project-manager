@@ -36,15 +36,10 @@ class ProjectController extends Controller
 
     public function store(StoreProjectRequest $request)
     {
-        $project =  Project::create(array_merge([
-            'user_id' => $request->user()->id,
-            'status' => Project::defaultStatus(),
-            'priority' => Project::defaultStatus(),
-            'title' => 'Untitled Project',
-            'content' => '',
-            'client' => null,
-            'deadline' => null,
-        ], $request->validated()));
+        $project = Project::create([
+            ...$request->validated(),
+            'user_id' => $request->user()->id
+        ]);
 
         return response()->json(ProjectData::from($project));
     }

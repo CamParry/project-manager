@@ -13,7 +13,7 @@ const listProjects = async (): Promise<{
     const response = await fetch("/api/projects", {
         method: "GET",
         headers: createHeaders({
-            "Accept": "application/json",
+            Accept: "application/json",
             "X-Requested-With": "XMLHttpRequest",
         }),
     });
@@ -26,13 +26,11 @@ const listProjects = async (): Promise<{
 };
 
 const createProject = async (data: Partial<Project> = {}): Promise<Project> => {
-    console.log(data);
-
     const response = await fetch("/projects", {
         method: "POST",
-        headers: createHeaders({ 
+        headers: createHeaders({
             "Content-Type": "application/json",
-            "Accept": "application/json",
+            Accept: "application/json",
             "X-Requested-With": "XMLHttpRequest",
         }),
         body: JSON.stringify({
@@ -59,16 +57,18 @@ const updateProject = async (
 ): Promise<Project> => {
     const response = await fetch(`/projects/${params.projectId}`, {
         method: "PATCH",
-        headers: createHeaders({ 
+        headers: createHeaders({
             "Content-Type": "application/json",
-            "Accept": "application/json",
+            Accept: "application/json",
             "X-Requested-With": "XMLHttpRequest",
         }),
         body: JSON.stringify(data),
     });
 
     if (!response.ok) {
-        throw new Error(`Failed to update project: ${response.status} ${response.statusText}`);
+        throw new Error(
+            `Failed to update project: ${response.status} ${response.statusText}`
+        );
     }
 
     return response.json();
@@ -78,7 +78,7 @@ const deleteProject = async (params: { projectId: number }): Promise<void> => {
     const response = await fetch(`/projects/${params.projectId}`, {
         method: "DELETE",
         headers: createHeaders({
-            "Accept": "application/json",
+            Accept: "application/json",
             "X-Requested-With": "XMLHttpRequest",
         }),
     });
@@ -111,6 +111,7 @@ export const useCreateProject = () => {
             onError?: (error: Error) => void;
         }) => createProject(data),
 
+        retry: false, // Disable retries to prevent double creation
 
         onSuccess: (data, options) => {
             queryClient.invalidateQueries({ queryKey: ["projects"] });
@@ -146,7 +147,6 @@ export const useUpdateProject = () => {
             onError?: (error: Error) => void;
         }) => updateProject(params, data),
 
-
         onSuccess: (data, options) => {
             queryClient.invalidateQueries({ queryKey: ["projects"] });
             queryClient.invalidateQueries({
@@ -180,7 +180,6 @@ export const useDeleteProject = () => {
             onSuccess?: () => void;
             onError?: (error: Error) => void;
         }): Promise<void> => deleteProject(params),
-
 
         onSuccess: (_, options) => {
             queryClient.invalidateQueries({ queryKey: ["projects"] });
