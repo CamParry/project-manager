@@ -7,37 +7,9 @@ export default defineConfig({
     plugins: [
         tailwindcss(),
         laravel({
-            input: "resources/js/app.tsx",
+            input: ["resources/js/app.tsx", "resources/css/app.css"],
             refresh: true,
         }),
         react(),
     ],
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    vendor: ['react', 'react-dom'],
-                    inertia: ['@inertiajs/react'],
-                    editor: ['@tiptap/react', '@tiptap/starter-kit'],
-                    icons: ['lucide-react'],
-                },
-            },
-        },
-        chunkSizeWarningLimit: 1000,
-        minify: 'terser',
-        terserOptions: {
-            compress: {
-                drop_console: true,
-                drop_debugger: true,
-            },
-        },
-    },
-    optimizeDeps: {
-        include: [
-            'react',
-            'react-dom',
-            '@inertiajs/react',
-            'lucide-react',
-        ],
-    },
 });
