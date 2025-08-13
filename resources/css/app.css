@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-n-50: theme(colors.zinc.50);
+    --color-n-100: theme(colors.zinc.100);
+    --color-n-200: theme(colors.zinc.200);
+    --color-n-300: theme(colors.zinc.300);
+    --color-n-400: theme(colors.zinc.400);
+    --color-n-500: theme(colors.zinc.500);
+    --color-n-600: theme(colors.zinc.600);
+    --color-n-700: theme(colors.zinc.700);
+    --color-n-800: theme(colors.zinc.800);
+    --color-n-900: theme(colors.zinc.900);
+
+    --color-primary: theme(colors.sky.600);
+    --color-danger: theme(colors.red.600);
+    --color-bg: theme(colors.white);
+    --color-bg-muted: theme(colors.zinc.100);
+    --color-text: theme(colors.zinc.900);
+    --color-text-muted: theme(colors.zinc.600);
+    --color-border: theme(colors.zinc.300);
+    --color-border-muted: theme(colors.zinc.200);
+}
+
+.dark {
+    --color-primary: theme(colors.sky.500);
+    --color-danger: theme(colors.red.500);
+    --color-bg: theme(colors.zinc.900);
+    --color-bg-muted: theme(colors.zinc.800);
+    --color-text: theme(colors.zinc.100);
+    --color-text-muted: theme(colors.zinc.400);
+    --color-border: theme(colors.zinc.600);
+    --color-border-muted: theme(colors.zinc.700);
+}
+
+@layer base {
+    :root {
+        interpolate-size: allow-keywords;
+    }
+}
+
+@layer utilities {
+    .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@layer components {
+    .icon-button {
+        @apply flex size-10 items-center justify-center rounded-lg border border-transparent bg-transparent text-text-muted hover:border-border disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .tiptap {
+        outline: none;
+        font-size: 1rem;
+
+        & h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        & h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        & h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        & p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        & ul,
+        & ol {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            list-style-position: outside;
+        }
+
+        & ul {
+            list-style-type: disc;
+        }
+
+        & ol {
+            list-style-type: decimal;
+
+            & li::marker {
+                font-weight: 700;
+            }
+        }
+
+        & li {
+            &:not(:first-child) {
+                margin-top: 0.25rem;
+            }
+
+            & p {
+                margin: 0;
+            }
+        }
+
+        & .list-checklist {
+            list-style: none;
+            padding-left: 0;
+
+            & li {
+                display: flex;
+
+                & label {
+                    display: inline-block;
+                    width: 1.125rem;
+                    height: 1.125rem;
+                    margin-right: 0.5rem;
+                    margin-top: 0.2rem;
+
+                    & span {
+                        display: none;
+                    }
+
+                    & input[type="checkbox"] {
+                        display: block;
+                        width: 1.125rem;
+                        height: 1.125rem;
+                        flex-shrink: 0;
+                        border-radius: 0.25rem;
+                    }
+
+                    & input[type="checkbox"]:checked {
+                        background-color: theme(colors.sky.600);
+                        border-color: theme(colors.sky.600);
+                    }
+                }
+
+                & div {
+                    display: inline-block;
+                }
+            }
+        }
+
+        & strong {
+            font-weight: 700;
+        }
+
+        & em {
+            font-style: italic;
+        }
+
+        & u {
+            text-decoration: underline;
+        }
+
+        & blockquote {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid theme(colors.gray.300);
+            color: theme(colors.gray.600);
+
+            .dark & {
+                border-left-color: theme(colors.gray.700);
+                color: theme(colors.gray.400);
+            }
+        }
+
+        & code {
+            font-family: "Courier New", Courier, monospace;
+            background-color: theme(colors.gray.100);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+
+            .dark & {
+                background-color: theme(colors.gray.800);
+            }
+        }
+
+        & pre {
+            background-color: theme(colors.gray.100);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+
+            .dark & {
+                background-color: theme(colors.gray.800);
+            }
+        }
+
+        & img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+        }
+
+        & :first-child {
+            margin-top: 0;
+        }
+
+        & .is-editor-empty:first-child::before {
+            content: attr(data-placeholder);
+            float: left;
+            color: theme(colors.gray.500);
+            pointer-events: none;
+            height: 0;
+            font-style: italic;
+        }
+    }
+}

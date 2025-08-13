@@ -1,0 +1,28 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+
+    level: 5
+
+    ignoreErrors:
+        # Allow missing return types for now in some areas
+        - '#Method.*has no return type specified#'
+        
+        # Ignore some template type issues
+        - '#Unable to resolve the template type#'
+        
+        # Ignore Laravel auth framework issue
+        - '#Parameter.*MustVerifyEmail.*User given#'
+
+    excludePaths:
+        - bootstrap/cache/*
+        - storage/*
+        - vendor/*
+        - node_modules/*
+        - public/*
+        - tests/*
+        - database/seeders/*
+        - database/migrations/*

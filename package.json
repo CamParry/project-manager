@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "php artisan typescript:transform && tsc && vite build",
+        "dev": "vite",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "type-gen": "php artisan typescript:transform"
+    },
+    "devDependencies": {
+        "@headlessui/react": "^2.2.7",
+        "@inertiajs/react": "^2.0.17",
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/vite": "^4.1.11",
+        "@types/node": "^24.2.0",
+        "@types/react": "^19.1.9",
+        "@types/react-dom": "^19.1.7",
+        "@vitejs/plugin-react": "^5.0.0",
+        "autoprefixer": "^10.4.21",
+        "axios": "^1.11.0",
+        "concurrently": "^9.2.0",
+        "import-sort-style-module": "^6.0.0",
+        "laravel-vite-plugin": "^2.0.0",
+        "postcss": "^8.5.6",
+        "prettier": "^3.6.2",
+        "prettier-plugin-import-sort": "^0.0.7",
+        "prettier-plugin-tailwindcss": "^0.6.14",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "tailwindcss": "^4.1.11",
+        "terser": "^5.43.1",
+        "typescript": "^5.9.2",
+        "vite": "^7.1.0"
+    },
+    "dependencies": {
+        "@tailwindcss/typography": "^0.5.16",
+        "@tanstack/react-query": "^5.84.1",
+        "@tiptap/extension-list": "^3.0.9",
+        "@tiptap/extension-placeholder": "^3.0.9",
+        "@tiptap/extension-text-align": "^3.0.9",
+        "@tiptap/extension-underline": "^3.0.9",
+        "@tiptap/pm": "^3.0.9",
+        "@tiptap/react": "^3.0.9",
+        "@tiptap/starter-kit": "^3.0.9",
+        "lucide-react": "^0.536.0",
+        "react-hook-form": "^7.62.0"
+    },
+    "importSort": {
+        ".js,.jsx,.ts,.tsx": {
+            "style": "module",
+            "parser": "typescript"
+        }
+    }
+}
