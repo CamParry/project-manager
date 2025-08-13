@@ -18,9 +18,9 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title' => 'string|max:255',
-            'content' => 'string',
-            'status' => ['string', Rule::in(Project::statuses())],
-            'priority' => ['integer', Rule::in(Project::priorities())],
+            'content' => 'nullable|string',
+            'status' => ['nullable', 'string', Rule::in(Project::statuses())],
+            'priority' => ['nullable', 'integer', Rule::in(Project::priorities())],
             'client' => 'nullable|string|max:255',
             'deadline' => 'nullable|date',
         ];
