@@ -17,14 +17,8 @@ const sortProjects = (
             case "priority":
                 const priorityDiff = a.priority - b.priority;
                 if (priorityDiff !== 0) return priorityDiff;
-                // If priorities are equal, sort by deadline
-                if (!a.deadline && !b.deadline) return 0;
-                if (!a.deadline) return 1;
-                if (!b.deadline) return -1;
-                return (
-                    new Date(a.deadline).getTime() -
-                    new Date(b.deadline).getTime()
-                );
+                // If priorities are equal, sort by title
+                return (a.title || "").toLowerCase().localeCompare((b.title || "").toLowerCase());
 
             case "title":
                 const titleA = (a.title || "Untitled Project").toLowerCase();

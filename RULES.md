@@ -4,8 +4,11 @@
 
 - Follow the established style guide for each language
 - Keep functions small and focused on a single responsibility
+- Avoid complexity and premature abstraction
+- Prioritise clean and readable code
 - Prefer composition over inheritance where appropriate
-- If you notice a file has been changed, confirm before changing it back
+- Always analyise if the chosen approach is ideal for the situation
+- If you notice a something has been changed don't revert it without asking
 
 ## Comments and Documentation
 
